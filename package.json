@@ -1,7 +1,7 @@
 {
   "name": "automation-practice-first-tests",
   "version": "1.0.0",
-  "description": "Automation Practice Site Initial Testing For The Code And Pepper Recruitment Process",
+  "description": "Automation Practice Site Initial Testing For The Code And Pepper Recruitment Process http://automationpractice.com/index.php",
   "main": "index.js",
   "scripts": {
     "test": "test"
