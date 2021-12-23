@@ -6,9 +6,9 @@ context('Intial', () => {
   })
 
   it('Sign Up Test', () => {
-    cy.get('img.logo.img-responsive').should(
-      'have.src',
-      'http://automationpractice.com/img/logo.jpg'
-    )
+    cy.get('img.logo.img-responsive')
+      .first()
+      .invoke('attr', 'src')
+      .should('eq', 'http://automationpractice.com/img/logo.jpg')
   })
 })
