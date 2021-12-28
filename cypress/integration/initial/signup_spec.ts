@@ -1,5 +1,10 @@
 /// <reference types="cypress" />
 
+const currDatesUtcStr = new Date()
+  .toISOString()
+  .replace(':', '-')
+  .replace(':', '-')
+
 context('Sign Up Tests', () => {
   beforeEach(() => {
     cy.visit('http://automationpractice.com')
@@ -13,15 +18,9 @@ context('Sign Up Tests', () => {
   })
 
   it.only('Sign Up Test Success', () => {
-    const currDatesUtcStr = new Date()
-      .toISOString()
-      .replace(':', '-')
-      .replace(':', '-')
-    console.log(currDatesUtcStr)
-
-    const singUpEmail = `test+${currDatesUtcStr}@test.com`
-
-    cy.get('a.login')
+    const singUpEmail = `auto-testers-login+@test.com`
+    // const singUpEmail = `test+${currDatesUtcStr}@test.com`
+    cy.get('a.login') 
       .click()
       .get('#email_create')
       .clear()
@@ -85,5 +84,24 @@ context('Sign Up Tests', () => {
       .type(singUpEmail.slice(0, 30))
       .get('#submitAccount')
       .click()
+  })
+
+  it('Sign Up Test Fail', () => {
+    const singUpEmail = `test+${currDatesUtcStr}@test.com`
+    cy.get('a.login')
+      .click()
+      .get('#email_create')
+      .clear()
+      .type(singUpEmail)
+      .get('#SubmitCreate')
+      .click()
+      // alert alert-danger
+      .get('div.alert.alert-danger > ol > li')
+      .should(
+        'contain',
+        'An account using this email address has already been registered. Please enter a valid password or request a new one.'
+      )
+
+    cy.debug()
   })
 })
