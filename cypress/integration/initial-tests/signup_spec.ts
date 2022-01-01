@@ -7,9 +7,10 @@ const currDatesUtcStr = new Date()
 
 context('Sign Up Tests', () => {
   beforeEach(() => {
-    cy.visit('http://automationpractice.com')
+    cy.visit('/')
   })
 
+//TODO - probably remove
   it('Check front page logo', () => {
     cy.get('img.logo.img-responsive')
       .first()
@@ -17,9 +18,8 @@ context('Sign Up Tests', () => {
       .should('eq', 'http://automationpractice.com/img/logo.jpg')
   })
 
-  it.only('Sign Up Test Success', () => {
-    const singUpEmail = `auto-testers-login+@test.com`
-    // const singUpEmail = `test+${currDatesUtcStr}@test.com`
+  it('Sign Up Test Success', () => {
+    const singUpEmail = `test+${currDatesUtcStr}@test.com`
     cy.get('a.login') 
       .click()
       .get('#email_create')
@@ -95,7 +95,6 @@ context('Sign Up Tests', () => {
       .type(singUpEmail)
       .get('#SubmitCreate')
       .click()
-      // alert alert-danger
       .get('div.alert.alert-danger > ol > li')
       .should(
         'contain',

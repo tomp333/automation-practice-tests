@@ -4,7 +4,8 @@
   "description": "Automation Practice Site Initial Testing For The Code And Pepper Recruitment Process http://automationpractice.com/index.php",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "npx cypress run  --spec .\\cypress\\integration\\initial-tests\\*.ts",
+    "test:chrome:headed": "npx cypress run  --browser chrome --headed --spec .\\cypress\\integration\\initial-tests\\*.ts"
   },
   "repository": {
     "type": "git",
