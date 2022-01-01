@@ -100,7 +100,5 @@ context('Sign Up Tests', () => {
         'contain',
         'An account using this email address has already been registered. Please enter a valid password or request a new one.'
       )
-
-    cy.debug()
   })
 })

@@ -9,15 +9,10 @@ describe('Login Tests', () => {
     cy.visit('/')
   })
 
-  it('Login Success', () => {
+  it.only('Login Success', () => {
     cy.contains('Sign in')
       .click()
-      .get('#email')
-      .type(Cypress.env('username'))
-      .get('#passwd')
-      .type(Cypress.env('password'))
-      .get('#SubmitLogin')
-      .click()
+      .login(Cypress.env('username'), Cypress.env('password'))
       .get('a.logout')
       .contains('Sign out')
       .get('a.account')
