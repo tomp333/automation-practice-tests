@@ -3,3 +3,4 @@
 /cypress/integration/2-advanced-examples
 /cypress/videos
 /.vscode
+*.png
