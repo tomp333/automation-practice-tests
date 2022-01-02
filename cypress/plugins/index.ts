@@ -17,4 +17,4 @@
 /**
  * @type {Cypress.PluginConfig}
  */
- module.exports = (on, config) => {}
+ export default (on, config) => {}
