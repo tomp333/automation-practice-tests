@@ -14,27 +14,7 @@
 
 // cypress/plugins/index.ts
 
-/// <reference types="cypress" />
-
-//TODO - clean up
-
 /**
  * @type {Cypress.PluginConfig}
  */
  module.exports = (on, config) => {}
- 
-// import dotenv = require('dotenv')
-// dotenv.config()
-
-// module.exports = (on, config) => {
-//   // copy any needed variables from process.env to config.env
-//   config.env.username = process.env.USERNAME
-
-//   // do not forget to return the changed config object!
-//   return config
-// }
-
-// // integration/spec.js
-// it('has username to use', () => {
-//   expect(Cypress.env('username')).to.be.a('string')
-// })

@@ -1,33 +1,19 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
 /// <reference types="cypress" />
 
+Cypress.Commands.add('signUp', email => {
+  return cy
+    .get('a.login')
+    .click()
+    .get('#email_create')
+    .clear()
+    .type(email)
+    .get('#SubmitCreate')
+    .click()
+})
+
 Cypress.Commands.add('login', (username, password) => {
-  cy.get('#email')
+  return cy
+    .get('#email')
     .type(username)
     .get('#passwd')
     .type(password)
@@ -35,6 +21,43 @@ Cypress.Commands.add('login', (username, password) => {
     .click()
 })
 
+Cypress.Commands.add('logout', () => {
+  return cy
+    .get('a.logout')
+    .contains('Sign out')
+    .should('be.visible')
+    .click()
+})
+
 Cypress.Commands.add('checkErrorMessage', message => {
-  cy.get('div.alert.alert-danger > ol > li').should('contain', message)
+  return cy.get('div.alert.alert-danger > ol > li').should('contain', message)
+})
+
+Cypress.Commands.add('search', query => {
+  return cy
+    .get('#searchbox')
+    .type(query)
+    .type('{enter}')
+})
+
+Cypress.Commands.add('proceedToCheckout', () => {
+  return cy
+    .get('p.cart_navigation > * > span')
+    .contains('Proceed to checkout')
+    .first()
+    .click({ force: true })
+})
+
+Cypress.Commands.add('continueShopping', () => {
+  return cy
+    .get("span:contains('Continue shopping')")
+    .first()
+    .click()
+})
+
+Cypress.Commands.add('confirmOrder', () => {
+  return cy
+    .get('p.cart_navigation > * > span')
+    .contains('I confirm my order')
+    .click()
 })
