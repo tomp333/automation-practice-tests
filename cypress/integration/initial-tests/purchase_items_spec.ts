@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Purchase items Tests', () => {
+describe('Purchase items Tests', () => {
   beforeEach(() => {
     cy.visit('/')
   })

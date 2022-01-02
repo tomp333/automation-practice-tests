@@ -26,7 +26,6 @@
 
 /// <reference types="cypress" />
 
-
 Cypress.Commands.add('login', (username, password) => {
   cy.get('#email')
     .type(username)
@@ -34,4 +33,8 @@ Cypress.Commands.add('login', (username, password) => {
     .type(password)
     .get('#SubmitLogin')
     .click()
-});
+})
+
+Cypress.Commands.add('checkErrorMessage', message => {
+  cy.get('div.alert.alert-danger > ol > li').should('contain', message)
+})

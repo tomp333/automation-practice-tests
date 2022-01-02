@@ -1,0 +1,16 @@
+{
+ "firstname" : "Tester",
+ "lastname": "Tom",
+ "birthDay": 1,
+ "birthMonth": "January",
+ "birthYear": "1970",
+ "company": "Testing Hard",
+ "address": {
+     "line1": "433 Harris St, Goodwater",
+     "city" :"Perth",
+     "state": "Alabama",
+     "postcode": "35072"     
+ },
+ "phone" : "251-217-0111",
+ "mobile":"11234567890"
+}

@@ -1,26 +1,33 @@
 /// <reference types="cypress" />
 
+
 const currDatesUtcStr = new Date()
   .toISOString()
   .replace(':', '-')
   .replace(':', '-')
 
-context('Sign Up Tests', () => {
+  describe('Sign Up Tests', () => {
   beforeEach(() => {
+    // cy.fixture('user-data.json').as('data')
+
     cy.visit('/')
   })
 
-//TODO - probably remove
-  it('Check front page logo', () => {
-    cy.get('img.logo.img-responsive')
-      .first()
-      .invoke('attr', 'src')
-      .should('eq', 'http://automationpractice.com/img/logo.jpg')
+  //TODO - probably remove
+  // it('Check front page logo', () => {
+  //   cy.get('img.logo.img-responsive')
+  //     .first()
+  //     .invoke('attr', 'src')
+  //     .should('eq', 'http://automationpractice.com/img/logo.jpg')
+  // })
+
+  before( ()=>{
+    cy.fixture('user-data').as('data')
   })
 
-  it('Sign Up Test Success', () => {
+  it('Sign Up Test Success', function() {
     const singUpEmail = `test+${currDatesUtcStr}@test.com`
-    cy.get('a.login') 
+    cy.get('a.login')
       .click()
       .get('#email_create')
       .clear()
@@ -36,49 +43,49 @@ context('Sign Up Tests', () => {
       .click()
       .get('#customer_firstname')
       .clear()
-      .type('Tester')
+      .type(this.data.firstname)
       .get('#customer_lastname')
       .clear()
-      .type('Tom')
+      .type(this.data.lastname)
       .get('#passwd')
       .clear()
       .type('@123asdasP8*#!klj')
       .get('#days')
       .first()
-      .select('1')
+      .select(this.data.birthDay)
       .get('#months')
-      .select('January')
+      .select(this.data.birthMonth)
       .get('#years')
-      .select('1970')
+      .select(this.data.birthYear)
       .get('#firstname')
       .clear()
-      .type('Tester')
+      .type(this.data.firstname)
       .get('#lastname')
       .clear()
-      .type('Tom')
+      .type(this.data.lastname)
       .get('#company')
       .clear()
-      .type('Testing Hard')
+      .type(this.data.company)
       .get('#address1')
       .clear()
-      .type('433 Harris St, Goodwater')
+      .type(this.data.address.line1)
       .get('#city')
       .clear()
-      .type('Perth')
+      .type(this.data.address.city)
       .get('#id_state')
-      .select('Alabama')
+      .select(this.data.address.state)
       .get('#postcode')
       .clear()
-      .type('35072')
+      .type(this.data.address.postcode)
       .get('#other')
       .clear()
       .type('TEST Additional information')
       .get('#phone')
       .clear()
-      .type('251-217-0111')
+      .type(this.data.phone)
       .get('#phone_mobile')
       .clear()
-      .type('+11234567890')
+      .type(this.data.mobile)
       .get('#alias')
       .clear()
       .type(singUpEmail.slice(0, 30))
@@ -95,9 +102,7 @@ context('Sign Up Tests', () => {
       .type(singUpEmail)
       .get('#SubmitCreate')
       .click()
-      .get('div.alert.alert-danger > ol > li')
-      .should(
-        'contain',
+      .checkErrorMessage(
         'An account using this email address has already been registered. Please enter a valid password or request a new one.'
       )
   })

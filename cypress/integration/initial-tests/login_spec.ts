@@ -20,3 +20,16 @@ describe('Login Tests', () => {
       .should('be.visible')
   })
 })
+
+it.only('Login Fail no password', () => {
+  cy.contains('Sign in')
+    .click()
+    .login(Cypress.env('username'), '')
+    .get('a.logout')
+    .contains('Sign out')
+    .get('a.account')
+    .contains('Tester Tom')
+    .should('be.visible')
+})
+
+});
