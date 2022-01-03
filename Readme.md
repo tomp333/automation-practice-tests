@@ -1,4 +1,4 @@
-# Automation Practice First Tests
+# Automation Practice Tests
 
 ## Current Test scenarios:
 
