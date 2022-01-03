@@ -1,6 +1,5 @@
 /// <reference types="cypress" />
 
-
 describe('Login Tests', () => {
   beforeEach(() => {
     cy.visit('/')
@@ -19,23 +18,10 @@ describe('Login Tests', () => {
       .should('be.visible')
   })
 
-
-it.only('Login fail for wrong password', () => {
-  cy.contains('Sign in')
-    .click()
-    .login(Cypress.env('username'), 'a')
-    .checkErrorMessage(
-      'Invalid password'
-    )
+  it('Login fail for wrong email', () => {
+    cy.contains('Sign in')
+      .click()
+      .login('wrong@', '!@#$ADFAWE%RQ@#')
+      .checkErrorMessage('Invalid email address.')
+  })
 })
-
-it('Login fail for wrong email', () => {
-  cy.contains('Sign in')
-    .click()
-    .login('wrong@','!@#$ADFAWE%RQ@#')
-    .checkErrorMessage(
-      'Invalid email address.'
-    )
-})
-
-});

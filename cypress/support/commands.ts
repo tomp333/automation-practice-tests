@@ -52,7 +52,7 @@ Cypress.Commands.add('continueShopping', () => {
   return cy
     .get("span:contains('Continue shopping')")
     .first()
-    .click()
+    .click({ force: true })
 })
 
 Cypress.Commands.add('confirmOrder', () => {
