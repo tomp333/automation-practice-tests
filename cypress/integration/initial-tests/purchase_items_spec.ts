@@ -5,31 +5,6 @@ describe('Purchase items Tests', () => {
     cy.visit('/')
   })
 
-  // it('Buy first element from search result', () => {
-  //   cy.contains('Sign in')
-  //     .click()
-  //     .login(Cypress.env('username'), Cypress.env('password'))
-  //     .search('skirt')
-  //     .get('div.ac_results > ul > li')
-  //     .first()
-  //     .click()
-  //     .get('#add_to_cart')
-  //     .click()
-  //     .get("a.btn-default[title='Proceed to checkout']") //TODO - Think how you can change it so maybe there could be one command to proceed to checkout
-  //     .click()
-  //     .proceedToCheckout()
-  //     .proceedToCheckout()
-  //     .get('#cgv')
-  //     .click()
-  //     .proceedToCheckout()
-  //     .get('a.bankwire')
-  //     .click()
-  //     .confirmOrder()
-  //     .get('p.cheque-indent > strong.dark') //Maybe this one should fail since we have different styling for "" message when user 'pays by check' which seems to be default
-  //     .first()
-  //     .should('contain', 'Your order on My Store is complete.')
-  // })
-
   it('Add few elements to the cart and purchase them', () => {
     cy.contains('Sign in')
       .click()
