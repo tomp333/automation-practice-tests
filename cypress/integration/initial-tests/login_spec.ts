@@ -5,7 +5,7 @@ describe('Login Tests', () => {
     cy.visit('/')
   })
 
-  it.only('Login and logout success', () => {
+  it('Login and logout success', () => {
     cy.contains('Sign in')
       .click()
       .login(Cypress.env('username'), Cypress.env('password'))
