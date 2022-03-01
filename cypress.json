@@ -1,4 +1,4 @@
 {
-    "baseUrl": "http://automationpractice.com",
-    "defaultCommandTimeout" : 10000
+  "baseUrl": "http://automationpractice.com",
+  "defaultCommandTimeout": 10000
 }
